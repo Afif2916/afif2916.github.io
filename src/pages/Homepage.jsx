@@ -19,6 +19,7 @@ import TechstackCard from "../components/TechstackCard";
 import projects from "../data/projects";
 import useSEO from "../utils/useSEO";
 import { ReactTyped } from "react-typed";
+import articles from "../data/article";
 
 import SEO from "../data/seo";
 
@@ -83,7 +84,7 @@ function Homepage() {
  
   return (
     
-    <div className="bg-white relative">
+    <div className="bg-white relative dark:bg-gray-800">
       <Navbar />
       <div className="px-4">
         {/* Logo Section */}
@@ -106,15 +107,27 @@ function Homepage() {
           transition={{ duration: 0.8 }}
           variants={fadeInUp}
         >
-          {/* Blob / Background Decoration */}
-          <div className="absolute top-0 -left-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-          <div className="absolute top-20 -right-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-20 left-1/2 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+          
+           <div className="absolute top-12 left-6 w-24 h-24 bg-amber-400 rounded-full opacity-80 animate-pulse hidden md:flex"></div>
 
+            {/* Kotak panjang */}
+            <div className="absolute top-1/3 right-8 w-3 h-32 bg-cyan-400 rounded-full rotate-12 opacity-70 hidden md:flex"></div>
+
+            {/* Segitiga pakai clip-path */}
+            <div
+                className="absolute bottom-16 left-10 w-0 h-0 border-l-[40px] border-r-[40px] border-b-[70px] border-transparent border-b-pink-500 opacity-80"
+            ></div>
+
+            {/* Kotak tipis miring */}
+            <div className="absolute bottom-24 right-1/4 w-32 h-6 bg-purple-500 rotate-6 opacity-70"></div>
+
+            {/* Garis tipis dekorasi */}
+            <div className="absolute top-1/2 left-1/2 w-40 h-[2px] bg-gray-400 opacity-40 rotate-45 hidden md:flex"></div>
+          
           <div className="relative max-w-7xl mx-auto flex flex-col md:flex-row md:justify-around items-center gap-6 mt-5">
             {/* Text Area */}
             <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-5xl">
-              <div className="text-[#27272a] font-bold leading-tight">
+              <div className="text-[#27272a] font-bold leading-tight dark:text-white ">
       <ReactTyped
         strings={[
           "Hallo, Nama Saya Afif.",
@@ -128,7 +141,7 @@ function Homepage() {
       />
     </div>
 
-              <div className="text-[#27272a] text-sm sm:text-base lg:text-lg pt-3 mt-6 leading-relaxed">
+              <div className="text-[#27272a] dark:text-white  text-sm sm:text-base lg:text-lg pt-3 mt-6 leading-relaxed">
                 Saya adalah seorang Backend Developer dengan keahlian di Node.js.
                 Saya berpengalaman membangun aplikasi web yang skalabel, aman, dan andal menggunakan berbagai framework serta teknologi.
                 Saya senang memecahkan masalah yang kompleks dan terus belajar keterampilan baru.
@@ -137,36 +150,32 @@ function Homepage() {
               </div>
 
               {/* Social Media */}
-              <div className="flex justify-center md:justify-start pt-6 gap-6">
-                <a>
-                  <FontAwesomeIcon
-                    icon={faTwitter}
-                    className="hover:text-amber-300"
-                    size="2x"
-                  />
-                </a>
-                <a>
-                  <FontAwesomeIcon
-                    icon={faGithub}
-                    className="hover:text-amber-300"
-                    size="2x"
-                  />
-                </a>
-                <a>
-                  <FontAwesomeIcon
-                    icon={faInstagram}
-                    className="hover:text-amber-300"
-                    size="2x"
-                  />
-                </a>
-                <a>
-                  <FontAwesomeIcon
-                    icon={faLinkedin}
-                    className="hover:text-amber-300"
-                    size="2x"
-                  />
-                </a>
-              </div>
+              <motion.div
+                className="flex justify-center md:justify-start pt-6 gap-6 flex-wrap"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8, duration: 0.8 }}
+              >
+                {[
+                  { icon: faTwitter, link: "https://twitter.com" },
+                  { icon: faGithub, link: "https://github.com" },
+                  { icon: faLinkedin, link: "https://linkedin.com" },
+                  { icon: faInstagram, link: "https://instagram.com" },
+                
+                ].map((item, i) => (
+                  <motion.a
+                    key={i}
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.2, rotate: 5 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="text-gray-600 hover:text-amber-400 transition dark:text-gray-300"
+                  >
+                    <FontAwesomeIcon icon={item.icon} size="2x" />
+                  </motion.a>
+                ))}
+              </motion.div>
             </div>
 
             {/* Image Area */}
@@ -190,8 +199,21 @@ function Homepage() {
           </div>
         </motion.div>
 
-        <div className="absolute top-150 -left-40 w-72 h-72 bg-cyan-300 rounded-full mix-blend-multiply filter blur-2xl  opacity-30 animate-blob"></div>
-        <div className="hidden sm:block absolute top-220 -right-40 w-72 h-72 bg-indigo-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000"></div>
+        <div className="absolute top-160 left-6 w-24 h-24 bg-amber-400 rounded-full opacity-80 animate-pulse "></div>
+
+            {/* Kotak panjang */}
+            <div className="absolute top-1/3 right-8 w-3 h-32 bg-cyan-400 rounded-full rotate-12 opacity-70 hidden md:flex"></div>
+
+            {/* Segitiga pakai clip-path */}
+            <div
+                className="hidden md:flex absolute top-1/3 left-10 w-0 h-0 border-l-[40px] border-r-[40px] border-b-[70px] border-transparent border-b-pink-500 opacity-80"
+            ></div>
+
+            {/* Kotak tipis miring */}
+            <div className="absolute top-180 right-1/15 w-32 h-6 bg-purple-500 rotate-6 opacity-70"></div>
+
+            {/* Garis tipis dekorasi */}
+            <div className="absolute top-1/2 left-1/2 w-40 h-[2px] bg-gray-400 opacity-40 rotate-45"></div>
 
         {/* Project Section */}
         <motion.div
@@ -229,6 +251,7 @@ function Homepage() {
             description={project.description}
             icon={project.icon}
             link={project.link}
+            color={project.color}
           />
         </motion.div>
       ))}
@@ -237,7 +260,7 @@ function Homepage() {
             </motion.div>
         
         <div className="absolute top-340 -left-40 w-72 h-72 bg-cyan-300 rounded-full mix-blend-multiply filter blur-2xl  opacity-30 animate-blob"></div>
-        <div className=" absolute top-450 -right-40 w-72 h-72 bg-indigo-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000"></div>
+        <div className=" hidden  absolute top-450 -right-40 w-72 h-72 bg-indigo-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000"></div>
         {/* Article Section */}
         <motion.div
           className="pt-5 mb-5 px-5"
@@ -252,21 +275,19 @@ function Homepage() {
               Articles
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {[...Array(6)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
-                  viewport={{ once: true }}
-                >
-                  <ArticleCard />
-                </motion.div>
-              ))}
+              {articles.map((article) => (
+        <ArticleCard
+          key={article.article_id}
+          title={article.title}
+          description={article.description}
+          image={article.image_url}
+          link={article.link}
+        />
+      ))}
             </div>
           </div>
         </motion.div>
-
+        
         {/* Work Experience and TechStack */}
         <motion.div
           className="pt-[60px] mb-[60px]"
@@ -276,7 +297,7 @@ function Homepage() {
           transition={{ duration: 0.8 }}
           variants={fadeInUp}
         >
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-5">
+          <div className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-2 gap-6">
             <WorkExperience />
             <TechstackCard />
           </div>

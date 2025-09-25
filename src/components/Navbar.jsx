@@ -6,13 +6,14 @@ export default function Navbar() {
       <nav className="flex justify-center items-center fixed top-[2vh] z-[999] w-full">
         <div
           className="
-            w-[360px]       /* layar kecil lebih ramping */
+            w-[325px]       /* layar kecil lebih ramping */
             sm:w-[300px]  /* layar >=640px */
-            md:w-[400px]  /* layar >=768px */
+            md:w-[500px]  /* layar >=768px */
             h-[36px]
             md:h-[50px] 
             bg-white rounded-[36px] 
-            shadow-[0px_2px_10px_rgba(0,0,0,0.1)]
+            dark:bg-gray-800
+            shadow-[0px_2px_10px_rgba(0,0,0,0.3)]
           "
         >
           <ul className="flex justify-between items-center px-4 h-full list-none">
@@ -24,7 +25,7 @@ export default function Navbar() {
                     `no-underline transition-colors duration-300 ease-in-out ${
                       isActive
                         ? "text-[#14b8a6]"
-                        : "text-[#27272a] hover:text-[#14b8a6]"
+                        : "text-[#27272a] hover:text-[#14b8a6] dark:text-gray-300"
                     }`
                   }
                 >

@@ -14,6 +14,8 @@ import Homepage from './pages/Homepage'
 import About from './pages/About'
 import Project from './pages/Project'
 import Articles from './pages/Articles'
+import Contact from './pages/Contact'
+import NotFound from './pages/NotFound'
 
 function App() {
   const [stayLogo, setStayLogo] = useState(false)
@@ -65,6 +67,8 @@ function App() {
       <Route path='/about' element={<About/>} />
       <Route path='/projects' element={<Project/>} />
       <Route path='/articles' element={<Articles/>} />
+      <Route path='/contact' element={<Contact/>} />
+      <Route path='/*' element={<NotFound/>} />
 
     </Routes>
   )

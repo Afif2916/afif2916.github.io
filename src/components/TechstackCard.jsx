@@ -27,7 +27,7 @@ export default function TechstackCard() {
         {techs.map((tech, index) => (
           <div
             key={index}
-            className="flex flex-col items-center justify-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg shadow hover:scale-105 transition-transform"
+            className="flex flex-col items-center justify-center p-4 bg-gray-100 dark:bg-gray-700 rounded-lg shadow hover:scale-105 transition-transform"
           >
             {tech.icon}
             <span className="mt-2 text-sm font-medium text-gray-700 dark:text-gray-300">

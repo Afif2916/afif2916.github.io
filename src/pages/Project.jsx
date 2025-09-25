@@ -2,7 +2,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { faTwitter, faGithub, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Image from '../assets/homepage.jpg'
+import Image from '../assets/development.png'
 import { useState, useEffect } from 'react';
 import Logo from '../assets/logoapip.png'
 import ProjectCard from '../components/ProjectCard';
@@ -85,7 +85,7 @@ export default function Project(){
                   keywords: currentSEO.keywords,
               });
     return (
-    <div className="bg-white relative">
+    <div className="bg-white relative dark:bg-gray-800">
       <Navbar />
       <div className="px-4">
         {/* Logo Area */}
@@ -108,12 +108,12 @@ export default function Project(){
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <div className="text-[#27272a] text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight">
+              <div className="text-[#27272a] text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight dark:text-gray-300">
                 Things I’ve made trying to put my dent in the universe.
               </div>
 
               <motion.div
-                className="text-[#27272a] text-sm sm:text-base lg:text-lg pt-3 mt-6 leading-relaxed"
+                className="text-[#27272a] text-sm sm:text-base lg:text-lg pt-3 mt-6 leading-relaxed dark:text-gray-300"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
@@ -142,7 +142,7 @@ export default function Project(){
                   <motion.img
                     src={Image}
                     alt="About"
-                    className="w-full h-full object-cover"
+                    className="w-full h-100 object-cover"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.4 }}
                   />
@@ -172,6 +172,7 @@ export default function Project(){
                     description={project.description}
                     icon={project.icon}
                     link={project.link}
+                    color={project.color}
                   />
                 </motion.div>
               ))}

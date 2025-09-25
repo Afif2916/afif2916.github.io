@@ -4,6 +4,10 @@ import { useState, useEffect } from 'react';
 import Logo from '../assets/logoapip.png';
 import ArticleCard from '../components/ArticleCard';
 import { motion } from "framer-motion";
+import articles from '../data/article';
+import useSEO from '../utils/useSEO';
+import SEO from "../data/seo";
+
 
 export default function Articles() {
   const [stayLogo, setStayLogo] = useState(false);
@@ -49,8 +53,16 @@ export default function Articles() {
     height: `${logoSize}px`,
   };
 
+  const currentSEO = SEO.find((item) => item.page === "articles");
+
+   useSEO({
+                    title: "Afif Portofolio",
+                    description: currentSEO.description,
+                    keywords: currentSEO.keywords,
+    });
+
   return (
-    <div className="bg-white relative">
+    <div className="bg-white relative dark:bg-gray-800">
       <Navbar />
       <div className="px-4">
         <div className="hidden md:flex justify-start items-center">
@@ -73,13 +85,13 @@ export default function Articles() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <div className="text-[#27272a] text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight">
+              <div className="text-[#27272a] text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight dark:text-gray-300">
                 I'm passionate about pushing the boundaries of what's possible
                 and inspiring the next generation of innovators.
               </div>
 
               <motion.div
-                className="text-[#27272a] text-sm sm:text-base lg:text-lg pt-3 mt-6 leading-relaxed"
+                className="text-[#27272a] text-sm sm:text-base lg:text-lg pt-3 mt-6 leading-relaxed dark:text-gray-300"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
@@ -100,18 +112,15 @@ export default function Articles() {
           {/* Articles Grid */}
           <div className="pt-5 mb-5 px-5">
             <div className="max-w-7xl mx-auto pt-[60px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {[...Array(6)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="transform hover:-translate-y-2 transition-all duration-300 cursor-pointer"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
-                  viewport={{ once: true }}
-                >
-                  <ArticleCard />
-                </motion.div>
-              ))}
+              {articles.map((article) => (
+        <ArticleCard
+          key={article.article_id}
+          title={article.title}
+          description={article.description}
+          image={article.image_url}
+          link={article.link}
+        />
+      ))}
             </div>
           </div>
         </div>

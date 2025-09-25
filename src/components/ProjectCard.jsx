@@ -1,4 +1,4 @@
-export default function ProjectCard({ name, description, icon: Icon, link }) {
+export default function ProjectCard({ name, description, icon: Icon, link, color }) {
   const isReactIcon = typeof Icon === "function"; // react-icons = function
 
   return (
@@ -8,9 +8,9 @@ export default function ProjectCard({ name, description, icon: Icon, link }) {
         <div className="mb-5 flex flex-row gap-5 items-center">
           <span className="text-4xl">
             {isReactIcon ? (
-              <Icon className="text-red-600" />
+              <Icon className={color} />
             ) : (
-              <img src={Icon} alt={name} className="w-16 h-16" />
+              <img src={Icon} alt={name} className="w-30 h-16" />
             )}
           </span>
           <a href={link} target="_blank" rel="noopener noreferrer">
